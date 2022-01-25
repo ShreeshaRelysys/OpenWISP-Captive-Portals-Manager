@@ -1,0 +1,38 @@
+OWCPM Changelog
+
+* Note
+
+This changelog only contains release TAGs.
+For a detailed changelog of each commits use the "git log" command.
+
+* Legend
+
+[F] Feature
+[B] Bugfix
+[S] Security fix
+[D] Documentation
+[M] Misc
+[N] Note
+ 
+* Log
+
+December 17th, 2013 - Version 0.9.4
+
+ * [B]: Prevent deauthentication to fail if we get an exception while retrieving called-station-id
+
+November 26th, 2013 - Version 0.9.3
+
+ * [F]: Authentication JSON API
+ * [F]: Send called station id to radius
+ * [F]: Mac address faux authentication
+
+April XXX, 2012 - Version 0.8.6b
+
+ * [N] Initial commit to Github
+ * [D] Added CHANGELOG
+ * [D] Added README.rdoc
+ * [M] Upgraded to RAILS version 3.0.12
+ * [S] Added mass-assignment protection with attr_accessible white-lists
+ * [F] Added cache to redirection URL calculation
+ * [B] Fixed daemons::restart rake task
+ * [B] Fixed default idle/session timeouts usage

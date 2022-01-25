@@ -1,0 +1,66 @@
+<%#
+# This file is part of the OpenWISP Captive Portal Manager
+#
+# Copyright (C) 2012 OpenWISP.org
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#%>
+
+<div class="grid_6 prefix_5 suffix_5">
+  <div class="box">
+    <h2>
+      <a href="#" id="toggle-operator_login"><%=t :operator_login %></a>
+    </h2>
+    <div class="block" id="operator_login">
+      <fieldset class="login">
+        <legend><%=t :please_login %></legend>
+
+        <%= form_for @operator_session, :url => {:action => "create"} do |f| %>
+            <% if @operator_session.errors.any? %>
+                <h3 class="toggler atStart" style="color: #ff0000"><%=t :login_failed %></h3>
+                <h4 class="toggler atStart">
+                  <ul>
+                    <% @operator_session.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </h4>
+            <% end %>
+
+
+            <p>
+              <%= f.label :login %>
+              <%= f.text_field :login %>
+            </p>
+
+            <p>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </p>
+
+            <p>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </p>
+
+            <%= f.submit %>
+
+        <% end %>
+
+      </fieldset>
+
+    </div>
+  </div>
+</div>
+<div class="clear">&nbsp;</div>

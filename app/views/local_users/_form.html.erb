@@ -1,0 +1,71 @@
+<%#
+# This file is part of the OpenWISP Captive Portal Manager
+#
+# Copyright (C) 2012 OpenWISP.org
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#%>
+
+<fieldset class="form">
+  <legend><%=t :local_user %></legend>
+
+  <%= form_for([@captive_portal, @local_user]) do |f| %>
+      <% if @local_user.errors.any? %>
+          <h3 id="error_explanation" class="toggler atStart" style="color: #ff0000">
+            <%= pluralize(@local_user.errors.count, "error") %>
+          </h3>
+          <h4 class="toggler atStart">
+            <ul>
+              <% @local_user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </h4>
+      <% end %>
+
+      <p>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </p>
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label :max_upload_bandwidth %>
+        <%= f.number_field :max_upload_bandwidth, :step => 1024, :min => 0 %>
+      </p>
+      <p>
+        <%= f.label :max_download_bandwidth %>
+        <%= f.number_field :max_download_bandwidth, :step => 1024, :min => 0 %>
+      </p>
+      <p>
+        <%= f.label :disabled %>
+        <%= f.check_box :disabled %>
+      </p>
+      <p>
+        <%= f.label :disabled_message %>
+        <%= f.text_field :disabled_message %>
+      </p>
+
+      <p>
+        <%= f.label :allow_concurrent_login %>
+        <%= f.check_box :allow_concurrent_login %>
+      </p>
+
+      <%= f.submit :class => :button %>
+
+  <% end %>
+
+</fieldset>

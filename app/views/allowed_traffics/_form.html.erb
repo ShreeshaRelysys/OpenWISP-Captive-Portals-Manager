@@ -1,0 +1,75 @@
+<%#
+# This file is part of the OpenWISP Captive Portal Manager
+#
+# Copyright (C) 2012 OpenWISP.org
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#%>
+
+<fieldset class="form">
+  <legend><%=t :allowed_traffic %></legend>
+
+  <%= form_for([@captive_portal, @allowed_traffic]) do |f| %>
+      <% if @allowed_traffic.errors.any? %>
+          <h3 id="error_explanation" class="toggler atStart" style="color: #ff0000">
+            <%= t(:error, :count => @allowed_traffic.errors.count) %>
+          </h3>
+          <h4 class="toggler atStart">
+            <ul>
+              <% @allowed_traffic.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </h4>
+      <% end %>
+
+
+      <p>
+        <%= f.label :protocol %>
+        <%= select :allowed_traffic,
+                   :protocol,
+                   [['tcp', 'tcp'], ['udp', 'udp']],
+                   {:include_blank => 'None'}
+        %>
+      </p>
+      <p>
+        <%= f.label :source_mac_address %>
+        <%= f.text_field :source_mac_address %>
+      </p>
+      <p>
+        <%= f.label :source_host %>
+        <%= f.text_field :source_host %>
+      </p>
+      <p>
+        <%= f.label :source_port %>
+        <%= f.text_field :source_port %>
+      </p>
+      <p>
+        <%= f.label :destination_host %>
+        <%= f.text_field :destination_host %>
+      </p>
+      <p>
+        <%= f.label :destination_port %>
+        <%= f.text_field :destination_port %>
+      </p>
+      <p>
+        <%= f.label :note %>
+        <%= f.text_field :note %>
+      </p>
+
+      <%= f.submit :class => :button %>
+
+  <% end %>
+
+</fieldset>
